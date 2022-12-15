@@ -22,6 +22,7 @@ class FilmsScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let navigationBarAppereance = UINavigationBarAppearance()
         navigationBarAppereance.configureWithDefaultBackground()
         navigationItem.standardAppearance = navigationBarAppereance
@@ -30,13 +31,17 @@ class FilmsScreenViewController: UIViewController {
         //searchController
         navigationItem.searchController = searchController
         searchController.obscuresBackgroundDuringPresentation = false
-        
-        loadingView = LoadingIndicator.shared.showLoading(in: view)
-        viewModel = FilmsScreenViewModel()
-        sendRequest()
         tableView.register(FilmsTableViewCell.self, forCellReuseIdentifier: FilmsTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.startAnimating()
+        tableView.backgroundView = spinner
+        //loadingView = LoadingIndicator.shared.showLoading(in: tableView.backgroundView)
+        viewModel = FilmsScreenViewModel()
+        sendRequest()
+        spinner.stopAnimating()
+        
     }
     
     func sendRequest() {
