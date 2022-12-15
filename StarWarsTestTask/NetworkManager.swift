@@ -7,19 +7,45 @@
 
 import Foundation
 
-typealias CompletionHadler = () -> Void
+typealias CompletionHandlerForFilms = (Result<Films,Error>) -> Void
+typealias CompletionHandlerForPerson = (Result<Person,Error>) -> Void
 
 class NetworkManager {
     
-    static let apiString = "https://swapi.dev/api/films/"
+    static let shared = NetworkManager()
+    
+    
+    
+    let apiString = "https://swapi.dev/api/films/"
+    
     // ?format=json
-    static func fetchFilms(completion: @escaping CompletionHadler) {
+    func fetchFilms(completion: @escaping CompletionHandlerForFilms) {
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.timeoutIntervalForRequest = 10
+        let session = URLSession(configuration: sessionConfig)
+        
         guard let url = URL(string: apiString) else { return }
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        session.dataTask(with: url) { data, response, error in
             if let data = data, error == nil {
                 if let decodedData = try? JSONDecoder().decode(Films.self, from: data) {
                     print(decodedData)
-                    completion()
+                    completion(.success(decodedData)); #warning("обработку ошибок сделать")
+                }
+            }
+        }.resume()
+    }
+    
+    func fetchPerson(personApiString: String, completion: @escaping CompletionHandlerForPerson) {
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.timeoutIntervalForRequest = 10
+        let session = URLSession(configuration: sessionConfig)
+        
+        guard let url = URL(string: personApiString) else { return }
+        session.dataTask(with: url) { data, response, error in
+            if let data = data, error == nil {
+                if let decodedData = try? JSONDecoder().decode(Person.self, from: data) {
+                    print(decodedData)
+                    completion(.success(decodedData)); #warning("обработку ошибок сделать")
                 }
             }
         }.resume()

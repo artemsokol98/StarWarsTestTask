@@ -7,9 +7,19 @@
 
 import UIKit
 
-class TableViewCell: UITableViewCell {
+class FilmsTableViewCell: UITableViewCell {
     
     static let identifier = "StarWarsFilmsIdentifier"
+    
+    private lazy var verticalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.addArrangedSubview(nameFilmLabel)
+        stackView.addArrangedSubview(nameDirectorLabel)
+        stackView.addArrangedSubview(nameProducerLabel)
+        stackView.addArrangedSubview(yearReleaseLabel)
+        return stackView
+    }()
+    
     
     private lazy var nameFilmLabel: UILabel = {
         let label = UILabel()
@@ -33,10 +43,15 @@ class TableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        /*
         contentView.addSubview(nameFilmLabel)
         contentView.addSubview(nameDirectorLabel)
         contentView.addSubview(nameProducerLabel)
         contentView.addSubview(yearReleaseLabel)
+         */
+        contentView.addSubview(verticalStackView)
+        contentView.layer.cornerRadius = 10//contentView.bounds.width * 0.2
+        contentView.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
     }
     
     required init?(coder: NSCoder) {
@@ -45,6 +60,21 @@ class TableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30))
+        verticalStackView.frame = contentView.bounds
+        verticalStackView.axis = .vertical
+        verticalStackView.alignment = .center
+        verticalStackView.distribution = .fillEqually
+        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let constraints = [
+            verticalStackView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
+            verticalStackView.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor),
+            verticalStackView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
+            verticalStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(constraints)
         
     }
     
@@ -55,6 +85,8 @@ class TableViewCell: UITableViewCell {
         self.yearReleaseLabel.text = data.YearRelease
     }
     
+    
+    /*
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -65,5 +97,5 @@ class TableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    */
 }
