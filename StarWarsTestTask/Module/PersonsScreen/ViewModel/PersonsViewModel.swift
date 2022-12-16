@@ -35,7 +35,8 @@ class PersonsViewModel: PersonsViewModelProtocol {
                         let tvm = PersonTableViewCellModel(
                             namePerson: person.name ?? "Unknown Info",
                             sexPerson: person.gender ?? "Unknown Info",
-                            bornDatePerson: person.birthYear ?? "Unknown Info"
+                            bornDatePerson: person.birthYear ?? "Unknown Info",
+                            homeworld: person.homeworld
                         )
                         self.tableViewPersons.append(tvm)
                     }

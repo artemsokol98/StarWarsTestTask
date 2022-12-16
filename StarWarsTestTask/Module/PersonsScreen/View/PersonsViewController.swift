@@ -9,7 +9,7 @@ import UIKit
 
 class PersonsViewController: UIViewController {
     
-    //var indexOfPreviousVC: Int!
+    var navTitle: String!
     
     var viewModel: PersonsViewModelProtocol!
     var personsApiStrings: [String]!
@@ -20,6 +20,7 @@ class PersonsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = navTitle
         viewModel = PersonsViewModel()
         viewModel.downloadingPersons(apiStrings: personsApiStrings) { [weak self] result in
             switch result {
@@ -50,19 +51,23 @@ class PersonsViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        guard let destanation = segue.destination as? PlanetViewController else { return }
+        guard let index = sender as? Int else { return }
+        destanation.apiString = viewModel.tableViewPersons[index].homeworld
     }
-    */
+    
 }
 
 extension PersonsViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showPlanet", sender: indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
 }
 
 extension PersonsViewController: UITableViewDataSource {

@@ -11,4 +11,5 @@ struct PersonTableViewCellModel {
     let namePerson: String
     let sexPerson: String
     let bornDatePerson: String
+    let homeworld: String?
 }

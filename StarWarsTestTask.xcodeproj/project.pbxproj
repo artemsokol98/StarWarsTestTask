@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		711C5790294A659D003097A5 /* FilmsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711C578F294A659D003097A5 /* FilmsTableViewCell.swift */; };
 		711C5792294A6D30003097A5 /* FilmsTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711C5791294A6D30003097A5 /* FilmsTableViewCellModel.swift */; };
+		717B1863294C5E9200EAFCF7 /* PlanetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B1862294C5E9200EAFCF7 /* PlanetViewController.swift */; };
+		717B1865294C645D00EAFCF7 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B1864294C645D00EAFCF7 /* Planet.swift */; };
+		717B1867294C65D100EAFCF7 /* PlanetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B1866294C65D100EAFCF7 /* PlanetViewModel.swift */; };
+		717B1869294C672900EAFCF7 /* PlanetModelForView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B1868294C672900EAFCF7 /* PlanetModelForView.swift */; };
 		717CBF12294B160700209BCA /* FilmsScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717CBF11294B160700209BCA /* FilmsScreenViewModel.swift */; };
 		717CBF14294B3F1000209BCA /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717CBF13294B3F1000209BCA /* LoadingIndicator.swift */; };
 		717CBF16294B7ACC00209BCA /* PersonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717CBF15294B7ACC00209BCA /* PersonsViewController.swift */; };
@@ -50,6 +54,10 @@
 /* Begin PBXFileReference section */
 		711C578F294A659D003097A5 /* FilmsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsTableViewCell.swift; sourceTree = "<group>"; };
 		711C5791294A6D30003097A5 /* FilmsTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsTableViewCellModel.swift; sourceTree = "<group>"; };
+		717B1862294C5E9200EAFCF7 /* PlanetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetViewController.swift; sourceTree = "<group>"; };
+		717B1864294C645D00EAFCF7 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
+		717B1866294C65D100EAFCF7 /* PlanetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetViewModel.swift; sourceTree = "<group>"; };
+		717B1868294C672900EAFCF7 /* PlanetModelForView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetModelForView.swift; sourceTree = "<group>"; };
 		717CBF11294B160700209BCA /* FilmsScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsScreenViewModel.swift; sourceTree = "<group>"; };
 		717CBF13294B3F1000209BCA /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		717CBF15294B7ACC00209BCA /* PersonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +108,77 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		717B185A294C5CC700EAFCF7 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				717B185D294C5CFA00EAFCF7 /* PlanetScreen */,
+				717B185C294C5CE300EAFCF7 /* PersonsScreen */,
+				717B185B294C5CD200EAFCF7 /* FilmsScreen */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		717B185B294C5CD200EAFCF7 /* FilmsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				717B185F294C5D2D00EAFCF7 /* ViewModel */,
+				717B185E294C5D1B00EAFCF7 /* View */,
+			);
+			path = FilmsScreen;
+			sourceTree = "<group>";
+		};
+		717B185C294C5CE300EAFCF7 /* PersonsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				717B1861294C5D8900EAFCF7 /* ViewModel */,
+				717B1860294C5D4B00EAFCF7 /* View */,
+			);
+			path = PersonsScreen;
+			sourceTree = "<group>";
+		};
+		717B185D294C5CFA00EAFCF7 /* PlanetScreen */ = {
+			isa = PBXGroup;
+			children = (
+				717B1862294C5E9200EAFCF7 /* PlanetViewController.swift */,
+				717B1866294C65D100EAFCF7 /* PlanetViewModel.swift */,
+			);
+			path = PlanetScreen;
+			sourceTree = "<group>";
+		};
+		717B185E294C5D1B00EAFCF7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				711C578F294A659D003097A5 /* FilmsTableViewCell.swift */,
+				71A6E7992949EF54000B9B26 /* FilmsScreenViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		717B185F294C5D2D00EAFCF7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				717CBF11294B160700209BCA /* FilmsScreenViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		717B1860294C5D4B00EAFCF7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				717CBF1A294B867B00209BCA /* PersonTableViewCell.swift */,
+				717CBF15294B7ACC00209BCA /* PersonsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		717B1861294C5D8900EAFCF7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				717CBF1C294B870D00209BCA /* PersonsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		717CBF19294B83BA00209BCA /* Support */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +195,8 @@
 				711C5791294A6D30003097A5 /* FilmsTableViewCellModel.swift */,
 				717CBF17294B7C9F00209BCA /* Person.swift */,
 				717CBF1E294B93D000209BCA /* PersonTableViewCellModel.swift */,
+				717B1864294C645D00EAFCF7 /* Planet.swift */,
+				717B1868294C672900EAFCF7 /* PlanetModelForView.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -143,17 +224,12 @@
 		71A6E7942949EF54000B9B26 /* StarWarsTestTask */ = {
 			isa = PBXGroup;
 			children = (
+				717B185A294C5CC700EAFCF7 /* Module */,
 				7189F98B2949F6170077B52A /* Models */,
 				717CBF19294B83BA00209BCA /* Support */,
-				71A6E7992949EF54000B9B26 /* FilmsScreenViewController.swift */,
 				717CBF13294B3F1000209BCA /* LoadingIndicator.swift */,
-				717CBF11294B160700209BCA /* FilmsScreenViewModel.swift */,
-				711C578F294A659D003097A5 /* FilmsTableViewCell.swift */,
 				7189F9892949F4A70077B52A /* NetworkManager.swift */,
 				71A6E79B2949EF54000B9B26 /* Main.storyboard */,
-				717CBF15294B7ACC00209BCA /* PersonsViewController.swift */,
-				717CBF1C294B870D00209BCA /* PersonsViewModel.swift */,
-				717CBF1A294B867B00209BCA /* PersonTableViewCell.swift */,
 				71A6E7A12949EF55000B9B26 /* Assets.xcassets */,
 				71A6E7A32949EF55000B9B26 /* LaunchScreen.storyboard */,
 				71A6E7A62949EF55000B9B26 /* Info.plist */,
@@ -318,7 +394,11 @@
 				71A6E7962949EF54000B9B26 /* AppDelegate.swift in Sources */,
 				7189F98A2949F4A70077B52A /* NetworkManager.swift in Sources */,
 				71A6E7982949EF54000B9B26 /* SceneDelegate.swift in Sources */,
+				717B1863294C5E9200EAFCF7 /* PlanetViewController.swift in Sources */,
+				717B1865294C645D00EAFCF7 /* Planet.swift in Sources */,
+				717B1867294C65D100EAFCF7 /* PlanetViewModel.swift in Sources */,
 				717CBF18294B7C9F00209BCA /* Person.swift in Sources */,
+				717B1869294C672900EAFCF7 /* PlanetModelForView.swift in Sources */,
 				717CBF16294B7ACC00209BCA /* PersonsViewController.swift in Sources */,
 				717CBF12294B160700209BCA /* FilmsScreenViewModel.swift in Sources */,
 				717CBF1F294B93D000209BCA /* PersonTableViewCellModel.swift in Sources */,

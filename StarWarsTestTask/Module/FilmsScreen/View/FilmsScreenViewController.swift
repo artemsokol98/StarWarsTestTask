@@ -87,7 +87,7 @@ extension FilmsScreenViewController: UITableViewDelegate {
         guard let destanation = segue.destination as? PersonsViewController else { return }
         guard let index = sender as? Int else { return }
         destanation.personsApiStrings = viewModel.films.results?[index].characters
-        //destanation.indexOfPreviousVC = sender as? Int
+        destanation.navTitle = viewModel.films.results?[index].title
     }
 }
 

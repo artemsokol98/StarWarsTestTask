@@ -38,10 +38,28 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="QRc-ng-UAO"/>
+                    <connections>
+                        <segue destination="93L-e7-zba" kind="presentation" identifier="showPlanet" id="Hx0-SU-Sry"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U0B-IB-wJQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2045" y="138"/>
+        </scene>
+        <!--Planet View Controller-->
+        <scene sceneID="oay-vB-5dx">
+            <objects>
+                <viewController id="93L-e7-zba" customClass="PlanetViewController" customModule="StarWarsTestTask" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MXO-Go-pHo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="1if-VD-Vuz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RTO-sw-b9l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3065" y="138"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vmB-jk-p4f">
