@@ -27,7 +27,7 @@ class NetworkManager {
         session.dataTask(with: url) { data, response, error in
             if let data = data, error == nil {
                 if let decodedData = try? JSONDecoder().decode(Films.self, from: data) {
-                    print(decodedData)
+                    //print(decodedData)
                     completion(.success(decodedData)); #warning("обработку ошибок сделать")
                 }
             }
@@ -43,7 +43,7 @@ class NetworkManager {
         session.dataTask(with: url) { data, response, error in
             if let data = data, error == nil {
                 if let decodedData = try? JSONDecoder().decode(Person.self, from: data) {
-                    print(decodedData)
+                    //print(decodedData)
                     completion(.success(decodedData)); #warning("обработку ошибок сделать")
                 }
             }

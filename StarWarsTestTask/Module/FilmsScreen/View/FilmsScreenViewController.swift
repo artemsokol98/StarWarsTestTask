@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class FilmsScreenViewController: UIViewController {
     
@@ -22,7 +23,7 @@ class FilmsScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Clear Cache", style: .done, target: self, action: #selector(clearCache))
         let navigationBarAppereance = UINavigationBarAppearance()
         navigationBarAppereance.configureWithDefaultBackground()
         navigationItem.standardAppearance = navigationBarAppereance
@@ -42,6 +43,10 @@ class FilmsScreenViewController: UIViewController {
         sendRequest()
         spinner.stopAnimating()
         
+    }
+    
+    @objc func clearCache() {
+        viewModel.clearCache()
     }
     
     func sendRequest() {
@@ -86,8 +91,8 @@ extension FilmsScreenViewController: UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destanation = segue.destination as? PersonsViewController else { return }
         guard let index = sender as? Int else { return }
-        destanation.personsApiStrings = viewModel.films.results?[index].characters
-        destanation.navTitle = viewModel.films.results?[index].title
+        destanation.personsApiStrings = viewModel.charecters[index] // тут может быть несовпадение по searched и обычные
+        destanation.navTitle = viewModel.parsedFilms[index].FilmName //
     }
 }
 

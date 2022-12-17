@@ -13,6 +13,9 @@
 		717B1865294C645D00EAFCF7 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B1864294C645D00EAFCF7 /* Planet.swift */; };
 		717B1867294C65D100EAFCF7 /* PlanetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B1866294C65D100EAFCF7 /* PlanetViewModel.swift */; };
 		717B1869294C672900EAFCF7 /* PlanetModelForView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B1868294C672900EAFCF7 /* PlanetModelForView.swift */; };
+		717B1871294CB0A200EAFCF7 /* FilmsCaching+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B186F294CB0A200EAFCF7 /* FilmsCaching+CoreDataClass.swift */; };
+		717B1872294CB0A200EAFCF7 /* FilmsCaching+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B1870294CB0A200EAFCF7 /* FilmsCaching+CoreDataProperties.swift */; };
+		717B1874294CB45800EAFCF7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B1873294CB45800EAFCF7 /* DataManager.swift */; };
 		717CBF12294B160700209BCA /* FilmsScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717CBF11294B160700209BCA /* FilmsScreenViewModel.swift */; };
 		717CBF14294B3F1000209BCA /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717CBF13294B3F1000209BCA /* LoadingIndicator.swift */; };
 		717CBF16294B7ACC00209BCA /* PersonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717CBF15294B7ACC00209BCA /* PersonsViewController.swift */; };
@@ -32,6 +35,9 @@
 		71A6E7B02949EF55000B9B26 /* StarWarsTestTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A6E7AF2949EF55000B9B26 /* StarWarsTestTaskTests.swift */; };
 		71A6E7BA2949EF55000B9B26 /* StarWarsTestTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A6E7B92949EF55000B9B26 /* StarWarsTestTaskUITests.swift */; };
 		71A6E7BC2949EF55000B9B26 /* StarWarsTestTaskUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A6E7BB2949EF55000B9B26 /* StarWarsTestTaskUITestsLaunchTests.swift */; };
+		71F712BF294E247200149711 /* StringArrayTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F712BE294E247200149711 /* StringArrayTransformer.swift */; };
+		71F712C2294E325A00149711 /* CharactersCaching+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F712C0294E325A00149711 /* CharactersCaching+CoreDataClass.swift */; };
+		71F712C3294E325A00149711 /* CharactersCaching+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F712C1294E325A00149711 /* CharactersCaching+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +64,9 @@
 		717B1864294C645D00EAFCF7 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		717B1866294C65D100EAFCF7 /* PlanetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetViewModel.swift; sourceTree = "<group>"; };
 		717B1868294C672900EAFCF7 /* PlanetModelForView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetModelForView.swift; sourceTree = "<group>"; };
+		717B186F294CB0A200EAFCF7 /* FilmsCaching+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilmsCaching+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		717B1870294CB0A200EAFCF7 /* FilmsCaching+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilmsCaching+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		717B1873294CB45800EAFCF7 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		717CBF11294B160700209BCA /* FilmsScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsScreenViewModel.swift; sourceTree = "<group>"; };
 		717CBF13294B3F1000209BCA /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		717CBF15294B7ACC00209BCA /* PersonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +90,9 @@
 		71A6E7B52949EF55000B9B26 /* StarWarsTestTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarWarsTestTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71A6E7B92949EF55000B9B26 /* StarWarsTestTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsTestTaskUITests.swift; sourceTree = "<group>"; };
 		71A6E7BB2949EF55000B9B26 /* StarWarsTestTaskUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsTestTaskUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		71F712BE294E247200149711 /* StringArrayTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringArrayTransformer.swift; sourceTree = "<group>"; };
+		71F712C0294E325A00149711 /* CharactersCaching+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharactersCaching+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		71F712C1294E325A00149711 /* CharactersCaching+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharactersCaching+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +191,17 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		717B186A294CAFFE00EAFCF7 /* Caching */ = {
+			isa = PBXGroup;
+			children = (
+				71F712C0294E325A00149711 /* CharactersCaching+CoreDataClass.swift */,
+				71F712C1294E325A00149711 /* CharactersCaching+CoreDataProperties.swift */,
+				717B186F294CB0A200EAFCF7 /* FilmsCaching+CoreDataClass.swift */,
+				717B1870294CB0A200EAFCF7 /* FilmsCaching+CoreDataProperties.swift */,
+			);
+			path = Caching;
+			sourceTree = "<group>";
+		};
 		717CBF19294B83BA00209BCA /* Support */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,7 +251,10 @@
 				7189F98B2949F6170077B52A /* Models */,
 				717CBF19294B83BA00209BCA /* Support */,
 				717CBF13294B3F1000209BCA /* LoadingIndicator.swift */,
+				71F712BE294E247200149711 /* StringArrayTransformer.swift */,
 				7189F9892949F4A70077B52A /* NetworkManager.swift */,
+				717B1873294CB45800EAFCF7 /* DataManager.swift */,
+				717B186A294CAFFE00EAFCF7 /* Caching */,
 				71A6E79B2949EF54000B9B26 /* Main.storyboard */,
 				71A6E7A12949EF55000B9B26 /* Assets.xcassets */,
 				71A6E7A32949EF55000B9B26 /* LaunchScreen.storyboard */,
@@ -387,8 +413,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				71A6E79A2949EF54000B9B26 /* FilmsScreenViewController.swift in Sources */,
+				71F712C2294E325A00149711 /* CharactersCaching+CoreDataClass.swift in Sources */,
+				71F712BF294E247200149711 /* StringArrayTransformer.swift in Sources */,
 				717CBF1D294B870D00209BCA /* PersonsViewModel.swift in Sources */,
 				717CBF1B294B867B00209BCA /* PersonTableViewCell.swift in Sources */,
+				717B1872294CB0A200EAFCF7 /* FilmsCaching+CoreDataProperties.swift in Sources */,
 				7189F98D2949F6270077B52A /* Films.swift in Sources */,
 				717CBF14294B3F1000209BCA /* LoadingIndicator.swift in Sources */,
 				71A6E7962949EF54000B9B26 /* AppDelegate.swift in Sources */,
@@ -399,10 +428,13 @@
 				717B1867294C65D100EAFCF7 /* PlanetViewModel.swift in Sources */,
 				717CBF18294B7C9F00209BCA /* Person.swift in Sources */,
 				717B1869294C672900EAFCF7 /* PlanetModelForView.swift in Sources */,
+				71F712C3294E325A00149711 /* CharactersCaching+CoreDataProperties.swift in Sources */,
 				717CBF16294B7ACC00209BCA /* PersonsViewController.swift in Sources */,
+				717B1871294CB0A200EAFCF7 /* FilmsCaching+CoreDataClass.swift in Sources */,
 				717CBF12294B160700209BCA /* FilmsScreenViewModel.swift in Sources */,
 				717CBF1F294B93D000209BCA /* PersonTableViewCellModel.swift in Sources */,
 				711C5790294A659D003097A5 /* FilmsTableViewCell.swift in Sources */,
+				717B1874294CB45800EAFCF7 /* DataManager.swift in Sources */,
 				71A6E7A02949EF54000B9B26 /* StarWarsTestTask.xcdatamodeld in Sources */,
 				711C5792294A6D30003097A5 /* FilmsTableViewCellModel.swift in Sources */,
 			);

@@ -1,4 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CharactersCaching" representedClassName="CharactersCaching" syncable="YES">
+        <attribute name="character" optional="YES" attributeType="Transformable" valueTransformerName="StringArrayTransformer" customClassName="[String]"/>
+    </entity>
+    <entity name="FilmsCaching" representedClassName="FilmsCaching" syncable="YES">
+        <attribute name="directorName" optional="YES" attributeType="String"/>
+        <attribute name="filmName" optional="YES" attributeType="String"/>
+        <attribute name="producerName" optional="YES" attributeType="String"/>
+        <attribute name="yearRelease" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="PersonsCaching" representedClassName="PersonsCaching" syncable="YES">
+        <attribute name="bornDatePerson" optional="YES" attributeType="String"/>
+        <attribute name="homeworld" optional="YES" attributeType="String"/>
+        <attribute name="namePerson" optional="YES" attributeType="String"/>
+        <attribute name="sexPerson" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="PlanetsCaching" representedClassName="PlanetsCaching" syncable="YES">
+        <attribute name="climate" optional="YES" attributeType="String"/>
+        <attribute name="diameter" optional="YES" attributeType="String"/>
+        <attribute name="gravitation" optional="YES" attributeType="String"/>
+        <attribute name="planetName" optional="YES" attributeType="String"/>
+        <attribute name="population" optional="YES" attributeType="String"/>
+        <attribute name="terrainType" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="FilmsCaching" positionX="-63" positionY="-18" width="128" height="89"/>
+        <element name="PersonsCaching" positionX="-63" positionY="9" width="128" height="89"/>
+        <element name="PlanetsCaching" positionX="-54" positionY="36" width="128" height="119"/>
+        <element name="CharactersCaching" positionX="-54" positionY="54" width="128" height="44"/>
+    </elements>
 </model>

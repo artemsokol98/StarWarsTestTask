@@ -14,6 +14,8 @@ protocol PersonsViewModelProtocol {
 
 class PersonsViewModel: PersonsViewModelProtocol {
     
+    //let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     var tableViewPersons = [PersonTableViewCellModel]()
     
     weak var filmsViewModel: FilmsScreenViewModelProtocol?
@@ -31,7 +33,6 @@ class PersonsViewModel: PersonsViewModelProtocol {
                 switch result {
                 case .success(let person):
                     DispatchQueue.main.async {
-                        print("123 \(person)")
                         let tvm = PersonTableViewCellModel(
                             namePerson: person.name ?? "Unknown Info",
                             sexPerson: person.gender ?? "Unknown Info",
