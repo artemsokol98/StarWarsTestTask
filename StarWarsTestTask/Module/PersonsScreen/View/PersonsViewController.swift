@@ -10,7 +10,7 @@ import UIKit
 class PersonsViewController: UIViewController {
     
     var navTitle: String!
-    
+    var numberOfMovie: Int!
     var viewModel: PersonsViewModelProtocol!
     var personsApiStrings: [String]!
     private lazy var tableView: UITableView = {

@@ -38,6 +38,9 @@
 		71F712BF294E247200149711 /* StringArrayTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F712BE294E247200149711 /* StringArrayTransformer.swift */; };
 		71F712C2294E325A00149711 /* CharactersCaching+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F712C0294E325A00149711 /* CharactersCaching+CoreDataClass.swift */; };
 		71F712C3294E325A00149711 /* CharactersCaching+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F712C1294E325A00149711 /* CharactersCaching+CoreDataProperties.swift */; };
+		71F712C6294E3D9400149711 /* PersonsCaching+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F712C4294E3D9400149711 /* PersonsCaching+CoreDataClass.swift */; };
+		71F712C7294E3D9400149711 /* PersonsCaching+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F712C5294E3D9400149711 /* PersonsCaching+CoreDataProperties.swift */; };
+		71F712C9294E49C100149711 /* PersonsArrayTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F712C8294E49C100149711 /* PersonsArrayTransformer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +96,9 @@
 		71F712BE294E247200149711 /* StringArrayTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringArrayTransformer.swift; sourceTree = "<group>"; };
 		71F712C0294E325A00149711 /* CharactersCaching+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharactersCaching+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		71F712C1294E325A00149711 /* CharactersCaching+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharactersCaching+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		71F712C4294E3D9400149711 /* PersonsCaching+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersonsCaching+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		71F712C5294E3D9400149711 /* PersonsCaching+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersonsCaching+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		71F712C8294E49C100149711 /* PersonsArrayTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsArrayTransformer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +200,8 @@
 		717B186A294CAFFE00EAFCF7 /* Caching */ = {
 			isa = PBXGroup;
 			children = (
+				71F712C4294E3D9400149711 /* PersonsCaching+CoreDataClass.swift */,
+				71F712C5294E3D9400149711 /* PersonsCaching+CoreDataProperties.swift */,
 				71F712C0294E325A00149711 /* CharactersCaching+CoreDataClass.swift */,
 				71F712C1294E325A00149711 /* CharactersCaching+CoreDataProperties.swift */,
 				717B186F294CB0A200EAFCF7 /* FilmsCaching+CoreDataClass.swift */,
@@ -252,6 +260,7 @@
 				717CBF19294B83BA00209BCA /* Support */,
 				717CBF13294B3F1000209BCA /* LoadingIndicator.swift */,
 				71F712BE294E247200149711 /* StringArrayTransformer.swift */,
+				71F712C8294E49C100149711 /* PersonsArrayTransformer.swift */,
 				7189F9892949F4A70077B52A /* NetworkManager.swift */,
 				717B1873294CB45800EAFCF7 /* DataManager.swift */,
 				717B186A294CAFFE00EAFCF7 /* Caching */,
@@ -416,6 +425,7 @@
 				71F712C2294E325A00149711 /* CharactersCaching+CoreDataClass.swift in Sources */,
 				71F712BF294E247200149711 /* StringArrayTransformer.swift in Sources */,
 				717CBF1D294B870D00209BCA /* PersonsViewModel.swift in Sources */,
+				71F712C9294E49C100149711 /* PersonsArrayTransformer.swift in Sources */,
 				717CBF1B294B867B00209BCA /* PersonTableViewCell.swift in Sources */,
 				717B1872294CB0A200EAFCF7 /* FilmsCaching+CoreDataProperties.swift in Sources */,
 				7189F98D2949F6270077B52A /* Films.swift in Sources */,
@@ -426,11 +436,13 @@
 				717B1863294C5E9200EAFCF7 /* PlanetViewController.swift in Sources */,
 				717B1865294C645D00EAFCF7 /* Planet.swift in Sources */,
 				717B1867294C65D100EAFCF7 /* PlanetViewModel.swift in Sources */,
+				71F712C6294E3D9400149711 /* PersonsCaching+CoreDataClass.swift in Sources */,
 				717CBF18294B7C9F00209BCA /* Person.swift in Sources */,
 				717B1869294C672900EAFCF7 /* PlanetModelForView.swift in Sources */,
 				71F712C3294E325A00149711 /* CharactersCaching+CoreDataProperties.swift in Sources */,
 				717CBF16294B7ACC00209BCA /* PersonsViewController.swift in Sources */,
 				717B1871294CB0A200EAFCF7 /* FilmsCaching+CoreDataClass.swift in Sources */,
+				71F712C7294E3D9400149711 /* PersonsCaching+CoreDataProperties.swift in Sources */,
 				717CBF12294B160700209BCA /* FilmsScreenViewModel.swift in Sources */,
 				717CBF1F294B93D000209BCA /* PersonTableViewCellModel.swift in Sources */,
 				711C5790294A659D003097A5 /* FilmsTableViewCell.swift in Sources */,

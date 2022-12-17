@@ -16,7 +16,7 @@ protocol FilmsScreenViewModelProtocol: AnyObject {
     var parsedFilms: [FilmsTableViewCellModel] { get set }
     var parsedFilmsSearched: [FilmsTableViewCellModel] { get set }
     func downloadingFilms(completion: @escaping (Result<Void, Error>) -> Void)
-    func clearCache()
+    //func clearCache()
 }
 
 class FilmsScreenViewModel: FilmsScreenViewModelProtocol {
@@ -31,24 +31,6 @@ class FilmsScreenViewModel: FilmsScreenViewModelProtocol {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
     
-    func clearCache() {
-        let storeContainer =
-            persistentContainer.persistentStoreCoordinator
-        
-        for store in storeContainer.persistentStores {
-            do {
-            try storeContainer.destroyPersistentStore(
-                at: store.url!,
-                ofType: store.type,
-                options: nil
-            )
-            } catch {
-                
-            }
-        }
-        
-        persistentContainer = NSPersistentContainer(name: "StarWarsTestTask")
-    }
     
     func createItemFilms(item: FilmsTableViewCellModel) {
         let newItem = FilmsCaching(context: context)
@@ -81,7 +63,7 @@ class FilmsScreenViewModel: FilmsScreenViewModelProtocol {
                 )
                 tableInfo.append(tvc)
             }
-            print(filmsCaching.count)
+            //print(filmsCaching.count)
         } catch {
             
         }
@@ -98,23 +80,11 @@ class FilmsScreenViewModel: FilmsScreenViewModelProtocol {
         } catch {
             
         }
-        print(charactersInfo)
+        //print(charactersInfo)
         return charactersInfo
     }
     
-    func entityIsEmpty(entity: String) -> Bool {
-        do {
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
-            let count = try context.count(for: request)
-            return count == 0
-        } catch let error as NSError {
-            print("Error: \(error.debugDescription)")
-            return true
-        }
-    }
-    
     func deleteItemsFromEntity() {
-        
         let fetchRequest: NSFetchRequest<FilmsCaching>
         fetchRequest = FilmsCaching.fetchRequest()
         
@@ -127,13 +97,11 @@ class FilmsScreenViewModel: FilmsScreenViewModelProtocol {
         } catch {
             
         }
-        
-       
     }
     
     func downloadingFilms(completion: @escaping (Result<Void, Error>) -> Void) {
         
-        if entityIsEmpty(entity: "FilmsCaching") {
+        if DataManager.shared.entityIsEmpty(entity: "FilmsCaching") {
             NetworkManager.shared.fetchFilms { films in
                 switch films {
                 case .success(let films):

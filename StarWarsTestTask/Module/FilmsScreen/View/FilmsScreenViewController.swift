@@ -46,7 +46,7 @@ class FilmsScreenViewController: UIViewController {
     }
     
     @objc func clearCache() {
-        viewModel.clearCache()
+        DataManager.shared.clearCache()
     }
     
     func sendRequest() {
@@ -92,7 +92,8 @@ extension FilmsScreenViewController: UITableViewDelegate {
         guard let destanation = segue.destination as? PersonsViewController else { return }
         guard let index = sender as? Int else { return }
         destanation.personsApiStrings = viewModel.charecters[index] // тут может быть несовпадение по searched и обычные
-        destanation.navTitle = viewModel.parsedFilms[index].FilmName //
+        destanation.navTitle = viewModel.parsedFilms[index].FilmName
+        destanation.numberOfMovie = index
     }
 }
 

@@ -9,6 +9,9 @@
         <attribute name="producerName" optional="YES" attributeType="String"/>
         <attribute name="yearRelease" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="PersonsArrayCaching" representedClassName="PersonsArrayCaching" syncable="YES">
+        <attribute name="arrayPersons" optional="YES" attributeType="Transformable" valueTransformerName="PersonsArrayTransformer" customClassName="[PersonTableViewCellModel]"/>
+    </entity>
     <entity name="PersonsCaching" representedClassName="PersonsCaching" syncable="YES">
         <attribute name="bornDatePerson" optional="YES" attributeType="String"/>
         <attribute name="homeworld" optional="YES" attributeType="String"/>
@@ -28,5 +31,6 @@
         <element name="PersonsCaching" positionX="-63" positionY="9" width="128" height="89"/>
         <element name="PlanetsCaching" positionX="-54" positionY="36" width="128" height="119"/>
         <element name="CharactersCaching" positionX="-54" positionY="54" width="128" height="44"/>
+        <element name="PersonsArrayCaching" positionX="-45" positionY="63" width="128" height="44"/>
     </elements>
 </model>
