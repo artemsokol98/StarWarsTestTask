@@ -12,13 +12,6 @@ struct Films: Decodable {
     let next: Int?
     let previous: Int?
     let results: [Results]?
-    /*
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        print(container)
-        count = try d
-    }
-     */
 }
 
 struct Results: Decodable {

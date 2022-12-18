@@ -16,11 +16,27 @@ class PlanetViewModel: PlanetViewModelProtocol {
     var planetModelForView: PlanetModelForView!
     
     func downloadingPlanet(apiString: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        
+        if let data = UserDefaults.standard.data(forKey: apiString) {
+            do {
+                let tvm = try JSONDecoder().decode(PlanetModelForView.self, from: data)
+                self.planetModelForView = tvm
+                completion(.success(()))
+            } catch {
+                
+            }
+        } else {
         NetworkManager.shared.fetchPlanet(planetApiString: apiString) { result in
             switch result {
             case .success(let planet):
                 DispatchQueue.main.async {
                     self.planetModelForView = self.parsePlanet(planet: planet)
+                    do {
+                        let data = try JSONEncoder().encode(self.planetModelForView)
+                        UserDefaults.standard.set(data, forKey: apiString)
+                    } catch {
+                        
+                    }
                     completion(.success(()))
                 }
             case .failure(let error):
@@ -29,8 +45,7 @@ class PlanetViewModel: PlanetViewModelProtocol {
                     completion(.failure(error))
                 }
             }
-            
-            
+        }
         }
     }
     
@@ -44,6 +59,4 @@ class PlanetViewModel: PlanetViewModelProtocol {
             population: planet.population
         )
     }
-    
-    
 }

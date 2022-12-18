@@ -11,10 +11,10 @@ import CoreData
 class FilmsScreenViewController: UIViewController {
     
     var viewModel: FilmsScreenViewModelProtocol!
-    
-    private var loadingView = UIActivityIndicatorView()
+
     private let searchController = UISearchController()
-    var filterActive = false
+    private var filterActive = false
+    private let spinner = UIActivityIndicatorView(style: .large)
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -23,64 +23,75 @@ class FilmsScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // MARK: - Search bar configuration
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Clear Cache", style: .done, target: self, action: #selector(clearCache))
-        let navigationBarAppereance = UINavigationBarAppearance()
-        navigationBarAppereance.configureWithDefaultBackground()
-        navigationItem.standardAppearance = navigationBarAppereance
         navigationController?.navigationBar.tintColor = .label
         searchController.searchBar.delegate = self
-        //searchController
         navigationItem.searchController = searchController
         searchController.obscuresBackgroundDuringPresentation = false
+        
+        // MARK: - TableView configuration
+        
         tableView.register(FilmsTableViewCell.self, forCellReuseIdentifier: FilmsTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
-        let spinner = UIActivityIndicatorView(style: .large)
-        spinner.startAnimating()
+        
+        // MARK: - Spinner configuration
+        
+        spinner.hidesWhenStopped = true
         tableView.backgroundView = spinner
-        //loadingView = LoadingIndicator.shared.showLoading(in: tableView.backgroundView)
+        
         viewModel = FilmsScreenViewModel()
         sendRequest()
-        spinner.stopAnimating()
-        
-    }
-    
-    @objc func clearCache() {
-        DataManager.shared.clearCache()
-    }
-    
-    func sendRequest() {
-        viewModel.downloadingFilms { [weak self] result in
-            self?.loadingView.stopAnimating()
-            switch result {
-            case .success(()):
-                self?.tableView.reloadData()
-            case .failure(let error):
-                print("error in ViewController: \(error)"); #warning("сделать алерт с показанием ошибки через 10 секунд")
-            }
-            
-        }
     }
     
     override func viewDidLayoutSubviews() {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        
         let constraintsForTableView = [
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ]
-        
         NSLayoutConstraint.activate(constraintsForTableView)
-        
     }
     
-
-
-
+    @objc private func clearCache() {
+        DataManager.shared.clearCache()
+    }
+    
+    private func sendRequest() {
+        spinner.startAnimating()
+        viewModel.downloadingFilms { [weak self] result in
+            self?.spinner.stopAnimating()
+            switch result {
+            case .success(()):
+                self?.tableView.reloadData()
+            case .failure(let error):
+                print("error in ViewController: \(error)")
+                self?.showAlert(title: "Error", message: "Failed loading")
+            }
+        }
+    }
+    
+    private func showAlert(title: String, message: String) {
+        let action = UIAlertAction(title: "Try again", style: .default) { _ in
+            self.sendRequest()
+        }
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        alert.addAction(action)
+        present(alert, animated: true)
+    }
 }
+
+// MARK: - Pass data to the next ViewController
 
 extension FilmsScreenViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -91,11 +102,13 @@ extension FilmsScreenViewController: UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destanation = segue.destination as? PersonsViewController else { return }
         guard let index = sender as? Int else { return }
-        destanation.personsApiStrings = viewModel.charecters[index] // тут может быть несовпадение по searched и обычные
-        destanation.navTitle = viewModel.parsedFilms[index].FilmName
+        destanation.personsApiStrings = viewModel.charecters[index]
+        destanation.navTitle = filterActive ? viewModel.parsedFilmsSearched[index].FilmName : viewModel.parsedFilms[index].FilmName
         destanation.numberOfMovie = index
     }
 }
+
+// MARK: - Configuring table view cells
 
 extension FilmsScreenViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -103,7 +116,7 @@ extension FilmsScreenViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: FilmsTableViewCell.identifier, for: indexPath) as? FilmsTableViewCell else { return UITableViewCell() }; #warning("Сделать нормальный возврат во всех guard")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: FilmsTableViewCell.identifier, for: indexPath) as? FilmsTableViewCell else { return UITableViewCell() }
         cell.configureCell(data: filterActive ? viewModel.parsedFilmsSearched[indexPath.row] : viewModel.parsedFilms[indexPath.row])
         return cell
     }
@@ -111,42 +124,32 @@ extension FilmsScreenViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         300.0
     }
-
 }
 
+// MARK: - Configuring search settings
+
 extension FilmsScreenViewController: UISearchBarDelegate {
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         filterItems(text: searchBar.text)
-        //self.search = searchBar.text
-        //DataManager.shared.starWarsPeople = []
-        //DataManager.shared.lastSearches.insert(search, at: 0)
-        //searchRequest(searchString: urlStarWars + search)
-        //searchController.isActive = false
         tableView.reloadData()
     }
     
     func filterItems(text: String?) {
-        
-            guard let text = text else {
-                filterActive = false
-                self.tableView.reloadData()
-                return
-            }
-
+        guard let text = text else {
+            filterActive = false
+            self.tableView.reloadData()
+            return
+        }
         viewModel.parsedFilmsSearched = viewModel.parsedFilms.filter({ (item) -> Bool in
-            return item.FilmName.lowercased().contains(text.lowercased()) //item.title.lowercased().contains(text.lowercased())
+            return item.FilmName.lowercased().contains(text.lowercased())
             })
             filterActive = true
             self.tableView.reloadData()
-        }
+    }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = nil
         filterActive = false
         self.tableView.reloadData()
     }
-    
-
-    
 }

@@ -13,6 +13,7 @@ class PersonsViewController: UIViewController {
     var numberOfMovie: Int!
     var viewModel: PersonsViewModelProtocol!
     var personsApiStrings: [String]!
+    let spinner = UIActivityIndicatorView(style: .large)
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         return tableView
@@ -20,20 +21,46 @@ class PersonsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = true
         title = navTitle
         viewModel = PersonsViewModel()
-        viewModel.downloadingPersons(apiStrings: personsApiStrings) { [weak self] result in
-            switch result {
-            case .success(()):
-                self?.tableView.reloadData()
-            case .failure(let error):
-                print("\(error.localizedDescription)")
-            }
-        }
+        tableView.backgroundView = spinner
+        spinner.startAnimating()
+        sendRequest()
         tableView.register(PersonTableViewCell.self, forCellReuseIdentifier: PersonTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
         
+    }
+    
+    func sendRequest() {
+        viewModel.downloadingPersons(numberOfMovie: numberOfMovie, apiStrings: personsApiStrings) { [weak self] result in
+            self?.spinner.stopAnimating()
+            switch result {
+            case .success(()):
+                self?.tableView.reloadData()
+            case .failure(let error):
+                self?.showAlert(title: "Error", message: "Failed loading")
+                print("\(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func showAlert(title: String, message: String) {
+        let action = UIAlertAction(title: "Try again", style: .default) { _ in
+            self.sendRequest()
+        }
+        let back = UIAlertAction(title: "Back", style: .default) { _ in
+            self.navigationController?.popViewController(animated: true)
+        }
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        alert.addAction(action)
+        alert.addAction(back)
+        present(alert, animated: true)
     }
     
     override func viewDidLayoutSubviews() {
@@ -50,25 +77,27 @@ class PersonsViewController: UIViewController {
         NSLayoutConstraint.activate(constraintsForTableView)
     }
     
-
     
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destanation = segue.destination as? PlanetViewController else { return }
-        guard let index = sender as? Int else { return }
-        destanation.apiString = viewModel.tableViewPersons[index].homeworld
-    }
     
 }
+
+// MARK: - Pass data to the next ViewController
 
 extension PersonsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showPlanet", sender: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: false)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destanation = segue.destination as? PlanetViewController else { return }
+        guard let index = sender as? Int else { return }
+        destanation.apiString = viewModel.tableViewPersons[index].homeworld
+    }
 }
+
+// MARK: - Configuring Table View cell
 
 extension PersonsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -84,5 +113,4 @@ extension PersonsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         300.0
     }
-    
 }

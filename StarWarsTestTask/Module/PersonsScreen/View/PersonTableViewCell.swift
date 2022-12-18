@@ -21,6 +21,7 @@ class PersonTableViewCell: UITableViewCell {
     
     private lazy var namePerson: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 20, weight: .bold)
         return label
     }()
     
@@ -45,6 +46,8 @@ class PersonTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Layout table view cell elements
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30))
@@ -65,22 +68,8 @@ class PersonTableViewCell: UITableViewCell {
     }
     
     func configureCell(data: PersonTableViewCellModel) {
-        self.namePerson.text = data.namePerson
-        self.sexPerson.text = data.sexPerson
-        self.bornDatePerson.text = data.bornDatePerson
+        self.namePerson.text = "Name: \(data.namePerson)"
+        self.sexPerson.text = "Gender: \(data.sexPerson)"
+        self.bornDatePerson.text = "Born date: \(data.bornDatePerson)"
     }
-    
-    
-    /*
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-     */
 }

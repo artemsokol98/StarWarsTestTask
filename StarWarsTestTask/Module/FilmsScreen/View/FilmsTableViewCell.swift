@@ -20,9 +20,9 @@ class FilmsTableViewCell: UITableViewCell {
         return stackView
     }()
     
-    
     private lazy var nameFilmLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 20, weight: .bold)
         return label
     }()
     
@@ -38,25 +38,23 @@ class FilmsTableViewCell: UITableViewCell {
     
     private lazy var yearReleaseLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.italicSystemFont(ofSize: 15)
+        label.textColor = .red
         return label
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        /*
-        contentView.addSubview(nameFilmLabel)
-        contentView.addSubview(nameDirectorLabel)
-        contentView.addSubview(nameProducerLabel)
-        contentView.addSubview(yearReleaseLabel)
-         */
         contentView.addSubview(verticalStackView)
-        contentView.layer.cornerRadius = 10//contentView.bounds.width * 0.2
+        contentView.layer.cornerRadius = 10
         contentView.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Layout Table view cell elements
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -73,29 +71,13 @@ class FilmsTableViewCell: UITableViewCell {
             verticalStackView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
             verticalStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor)
         ]
-        
         NSLayoutConstraint.activate(constraints)
-        
     }
     
     func configureCell(data: FilmsTableViewCellModel) {
-        self.nameFilmLabel.text = data.FilmName
-        self.nameDirectorLabel.text = data.DirectorName
-        self.nameProducerLabel.text = data.ProducerName
-        self.yearReleaseLabel.text = data.YearRelease
+        self.nameFilmLabel.text = "Movie: \(data.FilmName)"
+        self.nameDirectorLabel.text = "Director: \(data.DirectorName)"
+        self.nameProducerLabel.text = "Producer: \(data.ProducerName)"
+        self.yearReleaseLabel.text = "Date release: \(data.YearRelease)"
     }
-    
-    
-    /*
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    */
 }

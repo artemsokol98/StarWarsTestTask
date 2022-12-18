@@ -24,14 +24,6 @@ class PersonsArrayTransformer: ValueTransformer {
         
         do {
             guard let personsArray = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [PersonTableViewCellModel] else { return nil }
-            /*
-            var convertedArrayString = [String]()
-            //guard let unwrapedArray = arrayString else { return nil }
-            for item in unwrapedArray {
-                let convert = String(item)
-                convertedArrayString.append(convert)
-            }
-             */
             return personsArray
         } catch {
             return nil

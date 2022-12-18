@@ -5,61 +5,65 @@
 //  Created by Артем Соколовский on 15.12.2022.
 //
 
-import Foundation
 import UIKit
 import CoreData
 
-protocol PersonsViewModelProtocol {
-    func downloadingPersons(apiStrings: [String], completion: @escaping (Result<Void, Error>) -> Void)
-    var tableViewPersons: [PersonTableViewCellModel] { get set }
-}
-
 class PersonsViewModel: PersonsViewModelProtocol {
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     var tableViewPersons = [PersonTableViewCellModel]()
     
-    weak var filmsViewModel: FilmsScreenViewModelProtocol?
-    
-    func downloadingPersons(apiStrings: [String], completion: @escaping (Result<Void, Error>) -> Void) {
-        
-//        guard let persons = filmsViewModel?.films.results?[index].characters else { return }
-        if DataManager.shared.entityIsEmpty(entity: "PersonsCaching") {
-            let dispatchGroup = DispatchGroup()
-            for item in apiStrings {
-                dispatchGroup.enter()
-                NetworkManager.shared.fetchPerson(personApiString: item) { result in
-                    dispatchGroup.leave()
-                    switch result {
-                    case .success(let person):
-                        DispatchQueue.main.async {
-                            let tvm = PersonTableViewCellModel(
-                                namePerson: person.name ?? "Unknown Info",
-                                sexPerson: person.gender ?? "Unknown Info",
-                                bornDatePerson: person.birthYear ?? "Unknown Info",
-                                homeworld: person.homeworld
-                            )
-                            self.createItemPerson(item: tvm)
-                            self.tableViewPersons.append(tvm)
-                        }
-                    case .failure(let error):
-                        DispatchQueue.main.async {
-                            print(error.localizedDescription)
-                        }
-                    }
-                    
+    func downloadingPersons(numberOfMovie: Int, apiStrings: [String], completion: @escaping (Result<Void, Error>) -> Void) {
+        if let data = UserDefaults.standard.data(forKey: "\(numberOfMovie)") {
+            do {
+                let tvm = try JSONDecoder().decode([PersonTableViewCellModel].self, from: data)
+                if tvm.count > 0 {
+                    self.tableViewPersons = tvm
+                    completion(.success(()))
                 }
-            }
-            dispatchGroup.notify(queue: .main) {
-                completion(.success(()))
+            } catch {
+                
             }
         } else {
-            self.tableViewPersons = getAllPersons() // один и тот же набор скачивается вместо разных персонажей
+        let dispatchGroup = DispatchGroup()
+        for item in apiStrings {
+            dispatchGroup.enter()
+            NetworkManager.shared.fetchPerson(personApiString: item) { result in
+                dispatchGroup.leave()
+                switch result {
+                case .success(let person):
+                    DispatchQueue.main.async {
+                        let tvm = PersonTableViewCellModel(
+                            namePerson: person.name ?? "Unknown Info",
+                            sexPerson: person.gender ?? "Unknown Info",
+                            bornDatePerson: person.birthYear ?? "Unknown Info",
+                            homeworld: person.homeworld
+                        )
+                        self.tableViewPersons.append(tvm)
+                    }
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        print(error.localizedDescription)
+                        completion(.failure(error))
+                    }
+                }
+            }
         }
-        
-        
+        dispatchGroup.notify(queue: .main) {
+            do {
+                if self.tableViewPersons.count > 0 {
+                    let data = try JSONEncoder().encode(self.tableViewPersons)
+                    UserDefaults.standard.set(data, forKey: "\(numberOfMovie)")
+                }
+            } catch {
+                
+            }
+            completion(.success(()))
+            }
+        }
     }
+    
+    // MARK: - CoreData
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     func createItemPerson(item: PersonTableViewCellModel) {
         let newItem = PersonsCaching(context: context)
@@ -92,8 +96,6 @@ class PersonsViewModel: PersonsViewModelProtocol {
         }
         return tableInfo
     }
-    
-    
 }
 
 

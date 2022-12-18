@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PlanetModelForView {
+struct PlanetModelForView: Codable {
     let planetName: String
     let diameter: String
     let climate: String

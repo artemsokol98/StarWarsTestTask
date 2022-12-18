@@ -11,13 +11,11 @@ import CoreData
 
 class DataManager {
     static let shared = DataManager()
-    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
     
     func clearCache() {
         let storeContainer = persistentContainer.persistentStoreCoordinator
-        
         for store in storeContainer.persistentStores {
             do {
             try storeContainer.destroyPersistentStore(
@@ -28,8 +26,10 @@ class DataManager {
             } catch {
                 
             }
+            let domain = Bundle.main.bundleIdentifier!
+            UserDefaults.standard.removePersistentDomain(forName: domain)
+            UserDefaults.standard.synchronize()
         }
-        
         persistentContainer = NSPersistentContainer(name: "StarWarsTestTask")
     }
     
@@ -43,6 +43,4 @@ class DataManager {
             return true
         }
     }
-    
-    //var filmsCaching = [FilmsCaching]()
 }

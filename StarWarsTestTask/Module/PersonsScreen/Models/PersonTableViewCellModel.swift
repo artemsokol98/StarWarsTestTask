@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PersonTableViewCellModel {
+struct PersonTableViewCellModel: Codable {
     let namePerson: String
     let sexPerson: String
     let bornDatePerson: String
