@@ -21,8 +21,8 @@
 <table>
     <thead>
         <tr>
-            <th>Main Screen</th>
-            <th>Page Control</th>
+            <th>Films Screen</th>
+            <th>Persons and planet Screen</th>
         </tr>
     </thead>
     <tbody>
