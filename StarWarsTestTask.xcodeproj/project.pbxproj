@@ -11,6 +11,9 @@
 		711C5792294A6D30003097A5 /* FilmsTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711C5791294A6D30003097A5 /* FilmsTableViewCellModel.swift */; };
 		713CCA53294FBC0000F137C7 /* FilmsScreenViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713CCA52294FBC0000F137C7 /* FilmsScreenViewModelProtocol.swift */; };
 		713CCA55294FBF2200F137C7 /* PersonsViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713CCA54294FBF2200F137C7 /* PersonsViewModelProtocol.swift */; };
+		7178D801295051FC00197CD1 /* Films.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7178D7FF295051FC00197CD1 /* Films.gif */; };
+		7178D802295051FC00197CD1 /* PersonsAndPlanet.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7178D800295051FC00197CD1 /* PersonsAndPlanet.gif */; };
+		7178D8042950521900197CD1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7178D8032950521900197CD1 /* README.md */; };
 		717B1863294C5E9200EAFCF7 /* PlanetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B1862294C5E9200EAFCF7 /* PlanetViewController.swift */; };
 		717B1865294C645D00EAFCF7 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B1864294C645D00EAFCF7 /* Planet.swift */; };
 		717B1867294C65D100EAFCF7 /* PlanetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B1866294C65D100EAFCF7 /* PlanetViewModel.swift */; };
@@ -66,6 +69,9 @@
 		711C5791294A6D30003097A5 /* FilmsTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsTableViewCellModel.swift; sourceTree = "<group>"; };
 		713CCA52294FBC0000F137C7 /* FilmsScreenViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsScreenViewModelProtocol.swift; sourceTree = "<group>"; };
 		713CCA54294FBF2200F137C7 /* PersonsViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsViewModelProtocol.swift; sourceTree = "<group>"; };
+		7178D7FF295051FC00197CD1 /* Films.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Films.gif; sourceTree = "<group>"; };
+		7178D800295051FC00197CD1 /* PersonsAndPlanet.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = PersonsAndPlanet.gif; sourceTree = "<group>"; };
+		7178D8032950521900197CD1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		717B1862294C5E9200EAFCF7 /* PlanetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetViewController.swift; sourceTree = "<group>"; };
 		717B1864294C645D00EAFCF7 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		717B1866294C65D100EAFCF7 /* PlanetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetViewModel.swift; sourceTree = "<group>"; };
@@ -202,6 +208,15 @@
 			path = CoreDataClassesAndProperties;
 			sourceTree = "<group>";
 		};
+		7178D7FE295051D900197CD1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7178D7FF295051FC00197CD1 /* Films.gif */,
+				7178D800295051FC00197CD1 /* PersonsAndPlanet.gif */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		717B185A294C5CC700EAFCF7 /* Module */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +314,8 @@
 		71A6E7892949EF54000B9B26 = {
 			isa = PBXGroup;
 			children = (
+				7178D8032950521900197CD1 /* README.md */,
+				7178D7FE295051D900197CD1 /* Resources */,
 				71A6E7942949EF54000B9B26 /* StarWarsTestTask */,
 				71A6E7AE2949EF55000B9B26 /* StarWarsTestTaskTests */,
 				71A6E7B82949EF55000B9B26 /* StarWarsTestTaskUITests */,
@@ -453,6 +470,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7178D8042950521900197CD1 /* README.md in Resources */,
+				7178D801295051FC00197CD1 /* Films.gif in Resources */,
+				7178D802295051FC00197CD1 /* PersonsAndPlanet.gif in Resources */,
 				71A6E7A52949EF55000B9B26 /* LaunchScreen.storyboard in Resources */,
 				71A6E7A22949EF55000B9B26 /* Assets.xcassets in Resources */,
 				71A6E79D2949EF54000B9B26 /* Main.storyboard in Resources */,
