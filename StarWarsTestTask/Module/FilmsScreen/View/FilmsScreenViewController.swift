@@ -61,6 +61,7 @@ class FilmsScreenViewController: UIViewController {
     
     @objc private func clearCache() {
         DataManager.shared.clearCache()
+        alertCacheCleared()
     }
     
     private func sendRequest() {
@@ -75,6 +76,13 @@ class FilmsScreenViewController: UIViewController {
                 self?.showAlert(title: "Error", message: "Failed loading")
             }
         }
+    }
+    
+    private func alertCacheCleared() {
+        let alert = UIAlertController(title: "Done", message: "Cache has cleared", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default)
+        alert.addAction(action)
+        present(alert, animated: true)
     }
     
     private func showAlert(title: String, message: String) {
@@ -129,11 +137,12 @@ extension FilmsScreenViewController: UITableViewDataSource {
 // MARK: - Configuring search settings
 
 extension FilmsScreenViewController: UISearchBarDelegate {
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         filterItems(text: searchBar.text)
         tableView.reloadData()
     }
-    
+   
     func filterItems(text: String?) {
         guard let text = text else {
             filterActive = false
