@@ -14,6 +14,7 @@
 		7178D801295051FC00197CD1 /* Films.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7178D7FF295051FC00197CD1 /* Films.gif */; };
 		7178D802295051FC00197CD1 /* PersonsAndPlanet.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7178D800295051FC00197CD1 /* PersonsAndPlanet.gif */; };
 		7178D8042950521900197CD1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7178D8032950521900197CD1 /* README.md */; };
+		7178D8062950537800197CD1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178D8052950537800197CD1 /* Constants.swift */; };
 		717B1863294C5E9200EAFCF7 /* PlanetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B1862294C5E9200EAFCF7 /* PlanetViewController.swift */; };
 		717B1865294C645D00EAFCF7 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B1864294C645D00EAFCF7 /* Planet.swift */; };
 		717B1867294C65D100EAFCF7 /* PlanetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B1866294C65D100EAFCF7 /* PlanetViewModel.swift */; };
@@ -72,6 +73,7 @@
 		7178D7FF295051FC00197CD1 /* Films.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Films.gif; sourceTree = "<group>"; };
 		7178D800295051FC00197CD1 /* PersonsAndPlanet.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = PersonsAndPlanet.gif; sourceTree = "<group>"; };
 		7178D8032950521900197CD1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		7178D8052950537800197CD1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		717B1862294C5E9200EAFCF7 /* PlanetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetViewController.swift; sourceTree = "<group>"; };
 		717B1864294C645D00EAFCF7 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		717B1866294C65D100EAFCF7 /* PlanetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetViewModel.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				71A6E7952949EF54000B9B26 /* AppDelegate.swift */,
+				7178D8052950537800197CD1 /* Constants.swift */,
 				71A6E7972949EF54000B9B26 /* SceneDelegate.swift */,
 			);
 			path = Support;
@@ -505,6 +508,7 @@
 				713CCA53294FBC0000F137C7 /* FilmsScreenViewModelProtocol.swift in Sources */,
 				71F712BF294E247200149711 /* StringArrayTransformer.swift in Sources */,
 				717CBF1D294B870D00209BCA /* PersonsViewModel.swift in Sources */,
+				7178D8062950537800197CD1 /* Constants.swift in Sources */,
 				71F712C9294E49C100149711 /* PersonsArrayTransformer.swift in Sources */,
 				717CBF1B294B867B00209BCA /* PersonTableViewCell.swift in Sources */,
 				717B1872294CB0A200EAFCF7 /* FilmsCaching+CoreDataProperties.swift in Sources */,
