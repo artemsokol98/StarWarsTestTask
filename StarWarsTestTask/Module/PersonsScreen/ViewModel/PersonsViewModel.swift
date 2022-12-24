@@ -26,10 +26,11 @@ class PersonsViewModel: PersonsViewModelProtocol {
         let dispatchGroup = DispatchGroup()
         for item in apiStrings {
             dispatchGroup.enter()
-            NetworkManager.shared.fetchPerson(personApiString: item) { result in
+            NetworkManager.shared.fetchInformation(urlString: item, expectingType: Person.self) { result in
                 dispatchGroup.leave()
                 switch result {
                 case .success(let person):
+                    guard let person = person as? Person else { return }
                     DispatchQueue.main.async {
                         let tvm = PersonTableViewCellModel(
                             namePerson: person.name ?? "Unknown Info",

@@ -19,10 +19,11 @@ class FilmsScreenViewModel: FilmsScreenViewModelProtocol {
     func downloadingFilms(completion: @escaping (Result<Void, Error>) -> Void) {
         
         if DataManager.shared.entityIsEmpty(entity: "FilmsCaching") {
-            NetworkManager.shared.fetchFilms { films in
+            NetworkManager.shared.fetchInformation(urlString: "https://swapi.dev/api/films/", expectingType: Films.self) { films in
                 switch films {
                 case .success(let films):
                     DispatchQueue.main.async {
+                        guard let films = films as? Films else { return }
                         self.films = films
                         guard let results = films.results else { return }
                         for item in results {

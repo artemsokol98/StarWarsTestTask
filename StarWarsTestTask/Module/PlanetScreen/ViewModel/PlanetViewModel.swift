@@ -26,9 +26,10 @@ class PlanetViewModel: PlanetViewModelProtocol {
                 
             }
         } else {
-        NetworkManager.shared.fetchPlanet(planetApiString: apiString) { result in
+            NetworkManager.shared.fetchInformation(urlString: apiString, expectingType: Planet.self) { result in
             switch result {
             case .success(let planet):
+                guard let planet = planet as? Planet else { return }
                 DispatchQueue.main.async {
                     self.planetModelForView = self.parsePlanet(planet: planet)
                     do {
