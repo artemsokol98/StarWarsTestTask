@@ -59,6 +59,22 @@ class DataManager {
         //print(homeworld)
         return parsedData
     }
+    
+    func searchPlanetInDataBase(entity: String, apiString: String) throws -> PlanetModelForView? {
+        let request = PlanetsCaching.fetchRequest() as NSFetchRequest<PlanetsCaching>
+        request.predicate = NSPredicate(format: "apiString == %@", apiString)
+        guard let data = try? context.fetch(request) else { throw CoreDataErrors.CouldntGetData }
+        //guard let name = data.first?.planetName else { throw CoreDataErrors.CouldntGetData } // здесь может быть ошика, бывают случаи когда имени планеты нет, а остальные параметры есть. Обработать по-другому ошибку.
+        let parsedData = PlanetModelForView(
+            planetName: data.first?.planetName ?? "Unknowed",
+            diameter: data.first?.diameter ?? "Unknowed",
+            climate: data.first?.climate ?? "Unknowed",
+            gravitation: data.first?.gravitation ?? "Unknowed",
+            terrainType: data.first?.terrainType ?? "Unknowed",
+            population: data.first?.population ?? "Unknowed"
+        )
+        return parsedData
+    }
 }
 
 enum CoreDataErrors: Error {

@@ -15,6 +15,7 @@
         <attribute name="sexPerson" optional="YES" attributeType="String"/>
     </entity>
     <entity name="PlanetsCaching" representedClassName="PlanetsCaching" syncable="YES">
+        <attribute name="apiString" optional="YES" attributeType="String"/>
         <attribute name="climate" optional="YES" attributeType="String"/>
         <attribute name="diameter" optional="YES" attributeType="String"/>
         <attribute name="gravitation" optional="YES" attributeType="String"/>
@@ -24,7 +25,7 @@
     </entity>
     <elements>
         <element name="FilmsCaching" positionX="-513.2138671875" positionY="52.01922607421875" width="128" height="118"/>
-        <element name="PersonsCaching" positionX="410.7947998046875" positionY="27.20462036132812" width="128" height="28"/>
-        <element name="PlanetsCaching" positionX="324.4588623046875" positionY="-178.6514892578125" width="128" height="119"/>
+        <element name="PersonsCaching" positionX="635.4864501953125" positionY="-278.9502258300781" width="128" height="118"/>
+        <element name="PlanetsCaching" positionX="733.051025390625" positionY="205.1956787109375" width="128" height="148"/>
     </elements>
 </model>

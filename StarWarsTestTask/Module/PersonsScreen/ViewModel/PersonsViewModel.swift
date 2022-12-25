@@ -12,24 +12,9 @@ class PersonsViewModel: PersonsViewModelProtocol {
     var tableViewPersons = [PersonTableViewCellModel]()
     
     func downloadingPersons(numberOfMovie: Int, apiStrings: [String], completion: @escaping (Result<Void, Error>) -> Void) {
-        /*
-        if let data = UserDefaults.standard.data(forKey: "\(numberOfMovie)") {
-            do {
-                let tvm = try JSONDecoder().decode([PersonTableViewCellModel].self, from: data)
-                if tvm.count > 0 {
-                    self.tableViewPersons = tvm
-                    completion(.success(()))
-                }
-            } catch {
-                
-            }
-        } else {
-         */
-        
         let dispatchGroup = DispatchGroup()
         for item in apiStrings {
             dispatchGroup.enter()
-            
             do {
                 let result = try? DataManager.shared.searchPesonsInDataBase(entity: "PersonsCaching", apiString: item)
                 guard let result = result else { throw CoreDataErrors.CouldntGetData }
@@ -61,19 +46,8 @@ class PersonsViewModel: PersonsViewModelProtocol {
             }
         }
         dispatchGroup.notify(queue: .main) {
-            /*
-            do {
-                if self.tableViewPersons.count > 0 {
-                    let data = try JSONEncoder().encode(self.tableViewPersons)
-                    UserDefaults.standard.set(data, forKey: "\(numberOfMovie)")
-                }
-            } catch {
-                
-            }
-             */
             completion(.success(()))
-            }
-        //}
+        }
     }
     
     // MARK: - CoreData
