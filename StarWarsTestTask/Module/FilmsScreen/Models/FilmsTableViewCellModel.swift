@@ -12,4 +12,5 @@ struct FilmsTableViewCellModel {
     let DirectorName: String
     let ProducerName: String
     let YearRelease: String
+    let Characters: [String]
 }

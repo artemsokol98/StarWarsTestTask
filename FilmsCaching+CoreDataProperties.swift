@@ -2,7 +2,7 @@
 //  FilmsCaching+CoreDataProperties.swift
 //  StarWarsTestTask
 //
-//  Created by Артем Соколовский on 16.12.2022.
+//  Created by Артем Соколовский on 24.12.2022.
 //
 //
 
@@ -16,10 +16,11 @@ extension FilmsCaching {
         return NSFetchRequest<FilmsCaching>(entityName: "FilmsCaching")
     }
 
-    @NSManaged public var filmName: String?
     @NSManaged public var directorName: String?
+    @NSManaged public var filmName: String?
     @NSManaged public var producerName: String?
     @NSManaged public var yearRelease: String?
+    @NSManaged public var character: [String]?
 
 }
 

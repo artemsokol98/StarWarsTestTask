@@ -34,6 +34,7 @@ class PersonsViewController: UIViewController {
     }
     
     func sendRequest() {
+        print(personsApiStrings)
         viewModel.downloadingPersons(numberOfMovie: numberOfMovie, apiStrings: personsApiStrings) { [weak self] result in
             self?.spinner.stopAnimating()
             switch result {

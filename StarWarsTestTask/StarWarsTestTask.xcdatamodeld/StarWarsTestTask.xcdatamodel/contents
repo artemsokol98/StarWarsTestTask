@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="CharactersCaching" representedClassName="CharactersCaching" syncable="YES">
-        <attribute name="character" optional="YES" attributeType="Transformable" valueTransformerName="StringArrayTransformer" customClassName="[String]"/>
-    </entity>
     <entity name="FilmsCaching" representedClassName="FilmsCaching" syncable="YES">
+        <attribute name="character" optional="YES" attributeType="Transformable" valueTransformerName="StringArrayTransformer" customClassName="[String]"/>
         <attribute name="directorName" optional="YES" attributeType="String"/>
         <attribute name="filmName" optional="YES" attributeType="String"/>
         <attribute name="producerName" optional="YES" attributeType="String"/>
         <attribute name="yearRelease" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="PersonsArrayCaching" representedClassName="PersonsArrayCaching" syncable="YES">
-        <attribute name="arrayPersons" optional="YES" attributeType="Transformable" valueTransformerName="PersonsArrayTransformer" customClassName="[PersonTableViewCellModel]"/>
-    </entity>
     <entity name="PersonsCaching" representedClassName="PersonsCaching" syncable="YES">
         <attribute name="bornDatePerson" optional="YES" attributeType="String"/>
+        <attribute name="characterApiString" optional="YES" attributeType="String"/>
         <attribute name="homeworld" optional="YES" attributeType="String"/>
         <attribute name="namePerson" optional="YES" attributeType="String"/>
         <attribute name="sexPerson" optional="YES" attributeType="String"/>
@@ -27,10 +23,8 @@
         <attribute name="terrainType" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="FilmsCaching" positionX="-63" positionY="-18" width="128" height="89"/>
-        <element name="PersonsCaching" positionX="-63" positionY="9" width="128" height="89"/>
-        <element name="PlanetsCaching" positionX="-54" positionY="36" width="128" height="119"/>
-        <element name="CharactersCaching" positionX="-54" positionY="54" width="128" height="44"/>
-        <element name="PersonsArrayCaching" positionX="-45" positionY="63" width="128" height="44"/>
+        <element name="FilmsCaching" positionX="-513.2138671875" positionY="52.01922607421875" width="128" height="118"/>
+        <element name="PersonsCaching" positionX="410.7947998046875" positionY="27.20462036132812" width="128" height="28"/>
+        <element name="PlanetsCaching" positionX="324.4588623046875" positionY="-178.6514892578125" width="128" height="119"/>
     </elements>
 </model>

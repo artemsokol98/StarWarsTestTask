@@ -9,7 +9,7 @@ import Foundation
 
 class PersonsArrayTransformer: ValueTransformer {
     override func transformedValue(_ value: Any?) -> Any? {
-        guard let personsArray = value as? [PersonTableViewCellModel] else { return nil }
+        guard let personsArray = value as? PersonTableViewCellModel else { return nil }
         
         do {
             let data = try NSKeyedArchiver.archivedData(withRootObject: personsArray, requiringSecureCoding: true)
@@ -23,7 +23,7 @@ class PersonsArrayTransformer: ValueTransformer {
         guard let data = value as? Data else { return nil }
         
         do {
-            guard let personsArray = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [PersonTableViewCellModel] else { return nil }
+            guard let personsArray = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? PersonTableViewCellModel else { return nil }
             return personsArray
         } catch {
             return nil

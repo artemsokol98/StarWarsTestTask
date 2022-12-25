@@ -110,7 +110,7 @@ extension FilmsScreenViewController: UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destanation = segue.destination as? PersonsViewController else { return }
         guard let index = sender as? Int else { return }
-        destanation.personsApiStrings = viewModel.charecters[index]
+        destanation.personsApiStrings = filterActive ? viewModel.parsedFilmsSearched[index].Characters : viewModel.parsedFilms[index].Characters // в одном модуле передавать данные
         destanation.navTitle = filterActive ? viewModel.parsedFilmsSearched[index].FilmName : viewModel.parsedFilms[index].FilmName
         destanation.numberOfMovie = index
     }

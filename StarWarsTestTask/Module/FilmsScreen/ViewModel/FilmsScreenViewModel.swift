@@ -12,7 +12,7 @@ class FilmsScreenViewModel: FilmsScreenViewModelProtocol {
     var films: Films!
     var parsedFilms = [FilmsTableViewCellModel]()
     var parsedFilmsSearched = [FilmsTableViewCellModel]()
-    var charecters = [[String]]()
+    //var charecters = [[String]]()
     
     // MARK: - Network and parsing
     
@@ -25,11 +25,13 @@ class FilmsScreenViewModel: FilmsScreenViewModelProtocol {
                     DispatchQueue.main.async {
                         guard let films = films as? Films else { return }
                         self.films = films
+                        /*
                         guard let results = films.results else { return }
                         for item in results {
-                            self.charecters.append(item.characters)
-                            self.createItemArrayCharacters(item: item.characters)
+                            //self.charecters.append(item.characters)
+                            //self.createItemArrayCharacters(item: item.characters)
                         }
+                         */
                         self.parsedFilms = self.parsingFilms(films: films)
                         completion(.success(()))
                     }
@@ -41,7 +43,7 @@ class FilmsScreenViewModel: FilmsScreenViewModelProtocol {
                 }
             }
         } else {
-            self.charecters = getCharacters()
+            //self.charecters = getCharacters()
             self.parsedFilms = getAllItems()
         }
     }
@@ -54,7 +56,8 @@ class FilmsScreenViewModel: FilmsScreenViewModelProtocol {
                 FilmName: item.title ?? "Unknown Title",
                 DirectorName: item.director ?? "Unknown Director",
                 ProducerName: item.producer ?? "Unknown Producer",
-                YearRelease: item.releaseDate ?? "Unknown Release Date"
+                YearRelease: item.releaseDate ?? "Unknown Release Date",
+                Characters: item.characters
             )
             tableInfo.append(tvc)
             createItemFilms(item: tvc)
@@ -73,18 +76,19 @@ class FilmsScreenViewModel: FilmsScreenViewModelProtocol {
         newItem.directorName = item.DirectorName
         newItem.producerName = item.ProducerName
         newItem.yearRelease = item.YearRelease
+        newItem.character = item.Characters
         do {
             try context.save()
         } catch {
             
         }
     }
-    
+    /*
     func createItemArrayCharacters(item: [String]) {
         let newItem = CharactersCaching(context: context)
         newItem.character = item
     }
-    
+    */
     func getAllItems() -> [FilmsTableViewCellModel] {
         var tableInfo = [FilmsTableViewCellModel]()
         do {
@@ -94,7 +98,8 @@ class FilmsScreenViewModel: FilmsScreenViewModelProtocol {
                     FilmName: item.filmName ?? "Unknown Title",
                     DirectorName: item.directorName ?? "Unknown Title",
                     ProducerName: item.producerName ?? "Unknown Title",
-                    YearRelease: item.yearRelease ?? "Unknown Title"
+                    YearRelease: item.yearRelease ?? "Unknown Title",
+                    Characters: item.character ?? ["Unknown character"]
                 )
                 tableInfo.append(tvc)
             }
@@ -103,7 +108,7 @@ class FilmsScreenViewModel: FilmsScreenViewModelProtocol {
         }
         return tableInfo
     }
-    
+    /*
     func getCharacters() -> [[String]] {
         var charactersInfo = [[String]]()
         do {
@@ -116,7 +121,7 @@ class FilmsScreenViewModel: FilmsScreenViewModelProtocol {
         }
         return charactersInfo
     }
-    
+    */
     func deleteItemsFromEntity() {
         let fetchRequest: NSFetchRequest<FilmsCaching>
         fetchRequest = FilmsCaching.fetchRequest()

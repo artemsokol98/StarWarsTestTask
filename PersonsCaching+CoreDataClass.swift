@@ -2,7 +2,7 @@
 //  PersonsCaching+CoreDataClass.swift
 //  StarWarsTestTask
 //
-//  Created by Артем Соколовский on 17.12.2022.
+//  Created by Артем Соколовский on 24.12.2022.
 //
 //
 

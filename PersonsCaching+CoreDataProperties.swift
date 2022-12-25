@@ -2,7 +2,7 @@
 //  PersonsCaching+CoreDataProperties.swift
 //  StarWarsTestTask
 //
-//  Created by Артем Соколовский on 17.12.2022.
+//  Created by Артем Соколовский on 24.12.2022.
 //
 //
 
@@ -16,10 +16,11 @@ extension PersonsCaching {
         return NSFetchRequest<PersonsCaching>(entityName: "PersonsCaching")
     }
 
-    @NSManaged public var bornDatePerson: String?
-    @NSManaged public var homeworld: String?
+    @NSManaged public var characterApiString: String?
     @NSManaged public var namePerson: String?
     @NSManaged public var sexPerson: String?
+    @NSManaged public var bornDatePerson: String?
+    @NSManaged public var homeworld: String?
 
 }
 
