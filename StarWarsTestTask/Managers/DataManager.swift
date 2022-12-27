@@ -54,9 +54,7 @@ class DataManager {
             sexPerson: data.first?.sexPerson ?? "Unknowed",
             bornDatePerson: data.first?.bornDatePerson ?? "Unknowed",
             homeworld: data.first?.homeworld)
-        //guard let homeworld = data.first?.homeworld, let name = data.first?.namePerson else { return "Error"}
-        //print(name)
-        //print(homeworld)
+    
         return parsedData
     }
     
@@ -64,7 +62,7 @@ class DataManager {
         let request = PlanetsCaching.fetchRequest() as NSFetchRequest<PlanetsCaching>
         request.predicate = NSPredicate(format: "apiString == %@", apiString)
         guard let data = try? context.fetch(request) else { throw CoreDataErrors.CouldntGetData }
-        //guard let name = data.first?.planetName else { throw CoreDataErrors.CouldntGetData } // здесь может быть ошика, бывают случаи когда имени планеты нет, а остальные параметры есть. Обработать по-другому ошибку.
+        guard let name = data.first?.planetName else { throw CoreDataErrors.CouldntGetData } // здесь может быть ошика, бывают случаи когда имени планеты нет, а остальные параметры есть. Обработать по-другому ошибку.
         let parsedData = PlanetModelForView(
             planetName: data.first?.planetName ?? "Unknowed",
             diameter: data.first?.diameter ?? "Unknowed",

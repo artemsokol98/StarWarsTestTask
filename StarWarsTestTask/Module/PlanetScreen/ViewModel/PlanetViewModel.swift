@@ -18,18 +18,6 @@ class PlanetViewModel: PlanetViewModelProtocol {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     func downloadingPlanet(apiString: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        /*
-        if let data = UserDefaults.standard.data(forKey: apiString) {
-            do {
-                let tvm = try JSONDecoder().decode(PlanetModelForView.self, from: data)
-                self.planetModelForView = tvm
-                completion(.success(()))
-            } catch {
-                
-            }
-        } else {
-            */
-        
         do {
             let result = try? DataManager.shared.searchPlanetInDataBase(entity: "PlanetCaching", apiString: apiString)
             guard let result = result else { throw CoreDataErrors.CouldntGetData }
@@ -37,36 +25,22 @@ class PlanetViewModel: PlanetViewModelProtocol {
             completion(.success(()))
         } catch {
             NetworkManager.shared.fetchInformation(urlString: apiString, expectingType: Planet.self) { result in
-            switch result {
-            case .success(let planet):
-                guard let planet = planet as? Planet else { return }
-                DispatchQueue.main.async {
-                    self.planetModelForView = self.parsePlanet(planet: planet)
-                    self.createNewItem(planet: self.planetModelForView, apiString: apiString)
-                    /*
-                    do {
-                        let data = try JSONEncoder().encode(self.planetModelForView)
-                        UserDefaults.standard.set(data, forKey: apiString)
-                    } catch {
-                        
+                switch result {
+                case .success(let planet):
+                    guard let planet = planet as? Planet else { return }
+                    DispatchQueue.main.async {
+                        self.planetModelForView = self.parsePlanet(planet: planet)
+                        self.createNewItem(planet: self.planetModelForView, apiString: apiString)
+                        completion(.success(()))
                     }
-                     */
-                    completion(.success(()))
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    print(error.localizedDescription)
-                    completion(.failure(error))
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        print(error.localizedDescription)
+                        completion(.failure(error))
+                    }
                 }
             }
         }
-        }
-        
-        
-        
-        
-            
-        
     }
     
     func parsePlanet(planet: Planet) -> PlanetModelForView {
