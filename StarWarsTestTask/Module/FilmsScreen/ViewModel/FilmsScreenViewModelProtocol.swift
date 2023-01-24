@@ -8,7 +8,6 @@
 import Foundation
 
 protocol FilmsScreenViewModelProtocol: AnyObject {
-    //var charecters: [[String]] { get set }
     var films: Films! { get set }
     var parsedFilms: [FilmsTableViewCellModel] { get set }
     var parsedFilmsSearched: [FilmsTableViewCellModel] { get set }

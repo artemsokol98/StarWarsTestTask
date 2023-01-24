@@ -12,7 +12,6 @@ class FilmsScreenViewModel: FilmsScreenViewModelProtocol {
     var films: Films!
     var parsedFilms = [FilmsTableViewCellModel]()
     var parsedFilmsSearched = [FilmsTableViewCellModel]()
-    //var charecters = [[String]]()
     
     // MARK: - Network and parsing
     
@@ -25,13 +24,6 @@ class FilmsScreenViewModel: FilmsScreenViewModelProtocol {
                     DispatchQueue.main.async {
                         guard let films = films as? Films else { return }
                         self.films = films
-                        /*
-                        guard let results = films.results else { return }
-                        for item in results {
-                            //self.charecters.append(item.characters)
-                            //self.createItemArrayCharacters(item: item.characters)
-                        }
-                         */
                         self.parsedFilms = self.parsingFilms(films: films)
                         completion(.success(()))
                     }
@@ -43,7 +35,6 @@ class FilmsScreenViewModel: FilmsScreenViewModelProtocol {
                 }
             }
         } else {
-            //self.charecters = getCharacters()
             self.parsedFilms = getAllItems()
         }
     }
@@ -83,12 +74,7 @@ class FilmsScreenViewModel: FilmsScreenViewModelProtocol {
             
         }
     }
-    /*
-    func createItemArrayCharacters(item: [String]) {
-        let newItem = CharactersCaching(context: context)
-        newItem.character = item
-    }
-    */
+
     func getAllItems() -> [FilmsTableViewCellModel] {
         var tableInfo = [FilmsTableViewCellModel]()
         do {
@@ -108,20 +94,7 @@ class FilmsScreenViewModel: FilmsScreenViewModelProtocol {
         }
         return tableInfo
     }
-    /*
-    func getCharacters() -> [[String]] {
-        var charactersInfo = [[String]]()
-        do {
-            let charact = try context.fetch(CharactersCaching.fetchRequest())
-            for item in charact {
-                charactersInfo.append(item.character ?? ["no info"])
-            }
-        } catch {
-            
-        }
-        return charactersInfo
-    }
-    */
+
     func deleteItemsFromEntity() {
         let fetchRequest: NSFetchRequest<FilmsCaching>
         fetchRequest = FilmsCaching.fetchRequest()

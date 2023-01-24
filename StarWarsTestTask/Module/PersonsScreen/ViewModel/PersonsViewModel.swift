@@ -86,13 +86,7 @@ class PersonsViewModel: PersonsViewModelProtocol {
         }
         return tableInfo
     }
-    /*
-    func getPersonById(id: String) -> String? {
-        let fetchRequest: NSFetchRequest<String> = String.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "characterApiString = %@ ", argumentArray: [id])
-        return try? context.fetch(fetchRequest).first
-    }
-    */
+
 }
 
 
