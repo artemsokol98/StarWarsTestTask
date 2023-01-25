@@ -9,4 +9,5 @@ import UIKit
 
 class Constants {
     static let heightOfTableViewCell: CGFloat = 300.0
+    static let timeWaitingForResponseServer: TimeInterval = 30
 }

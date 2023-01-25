@@ -48,7 +48,7 @@ class DataManager {
         let request = PersonsCaching.fetchRequest() as NSFetchRequest<PersonsCaching>//NSFetchRequest<NSFetchRequestResult>(entityName: entity)
         request.predicate = NSPredicate(format: "characterApiString == %@", apiString)
         guard let data = try? context.fetch(request) else { throw CoreDataErrors.CouldntGetData }
-        guard let name = data.first?.namePerson else { throw CoreDataErrors.CouldntGetData }
+        guard let _ = data.first?.namePerson else { throw CoreDataErrors.CouldntGetData }
         let parsedData = PersonTableViewCellModel(
             namePerson: data.first?.namePerson ?? "Unknowed",
             sexPerson: data.first?.sexPerson ?? "Unknowed",
