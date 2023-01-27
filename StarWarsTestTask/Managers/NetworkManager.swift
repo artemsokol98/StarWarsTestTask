@@ -24,7 +24,6 @@ class NetworkManager {
                 }
             } else {
                 guard let error = error else { return }
-                
                 completion(.failure(error))
             }
         }.resume()

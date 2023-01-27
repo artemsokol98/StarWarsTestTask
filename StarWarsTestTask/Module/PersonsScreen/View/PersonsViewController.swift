@@ -34,7 +34,6 @@ class PersonsViewController: UIViewController {
     }
     
     func sendRequest() {
-        print(personsApiStrings)
         viewModel.downloadingPersons(numberOfMovie: numberOfMovie, apiStrings: personsApiStrings) { [weak self] result in
             self?.spinner.stopAnimating()
             switch result {
@@ -42,7 +41,7 @@ class PersonsViewController: UIViewController {
                 self?.tableView.reloadData()
             case .failure(let error):
                 self?.showAlert(title: "Error", message: "Failed loading")
-                print("\(error.localizedDescription)")
+                print(error.localizedDescription)
             }
         }
     }
@@ -77,10 +76,6 @@ class PersonsViewController: UIViewController {
         
         NSLayoutConstraint.activate(constraintsForTableView)
     }
-    
-    
-
-    
 }
 
 // MARK: - Pass data to the next ViewController
