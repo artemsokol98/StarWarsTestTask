@@ -24,7 +24,6 @@ class StringArrayTransformer: ValueTransformer {
         
         do {
             let arrayString = try NSKeyedUnarchiver.unarchivedArrayOfObjects(ofClass: NSString.self, from: data)
-            //unarchivedObject(ofClass: [String].self, from: data)
             var convertedArrayString = [String]()
             guard let unwrapedArray = arrayString else { return nil }
             for item in unwrapedArray {
